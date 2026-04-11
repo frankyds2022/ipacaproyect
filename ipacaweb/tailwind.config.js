@@ -13,8 +13,28 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Outfit', 'Inter', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                primary: {
+                    DEFAULT: '#000B4D', // Navy Blue from Logo background
+                    light: '#1a2468',
+                    dark: '#000028',
+                },
+                secondary: {
+                    DEFAULT: '#5B86E5', // Light blue from 'CONSULTORES'
+                    light: '#8baaf0',
+                    dark: '#3f68c2',
+                },
+                accent: {
+                    DEFAULT: '#F59E0B', // Gold/Orange for titles like 'SERVICIOS TÉCNICOS'
+                    hover: '#D97706'
+                },
+                slate: {
+                    800: '#1e293b',
+                    900: '#0f172a',
+                }
+            }
         },
     },
 
