@@ -48,7 +48,7 @@ export default function Welcome({ services, projects }) {
 
                     <div className="md:w-2/5 mt-16 md:mt-0 relative w-full hidden md:block">
                         <div className="rounded-3xl overflow-hidden shadow-2xl bg-slate-800 aspect-[4/5] border-4 border-white/10 relative group transform hover:rotate-1 transition duration-500">
-                            <img src="/images/hero_ipaca.png" alt="Equipo IPACA" className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105" />
+                            <img src="/images/home.jpg" alt="Equipo IPACA" className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/40 to-transparent opacity-80"></div>
 
                             <div className="absolute bottom-8 left-8 right-8 mb-2">
@@ -100,7 +100,7 @@ export default function Welcome({ services, projects }) {
                             </div>
                             <h3 className="text-4xl md:text-5xl font-outfit font-bold text-slate-900 dark:text-white mb-6 leading-tight">Nuestra Experiencia <br />a tu Servicio</h3>
                             <p className="text-slate-600 dark:text-slate-300 mb-6 font-inter leading-relaxed text-lg">
-                                En <span className="font-bold text-primary dark:text-secondary-light">IPACA Consultores</span>, somos líderes en la gestión y trámite de expedientes técnicos. Solucionamos los retos legales y físicos de tu propiedad o emprendimiento comercial.
+                                En <span className="font-bold text-primary dark:text-secondary-light">IPACA Consultores E.I.R.L</span>, somos líderes en la gestión y trámite de expedientes técnicos. Solucionamos los retos legales y físicos de tu propiedad o emprendimiento comercial.
                             </p>
                             <p className="text-slate-600 dark:text-slate-400 mb-10 font-inter leading-relaxed">
                                 Contamos con un equipo multidisciplinario de ingenieros y asesores colegiados que aseguran que todos tus trámites en la municipalidad o registros públicos se realicen de manera correcta, rápida y sin rechazos.

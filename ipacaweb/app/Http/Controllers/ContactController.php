@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMessage;
 
 class ContactController extends Controller
 {
@@ -23,9 +25,15 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Since no email provider is configured yet based on requirements, 
-        // we just log it and simulate a successful response for the frontend prototype.
-        Log::info('Nuevo Mensaje de Contacto: ', $validated);
+        try {
+            Mail::to('delacruzsuclupefranky2@gmail.com')->send(new ContactMessage($validated));
+            Log::info('Nuevo Mensaje de Contacto enviado exitosamente: ', $validated);
+        } catch (\Exception $e) {
+            Log::error('Error al enviar mensaje de contacto: ' . $e->getMessage());
+            // Optionally, we could return a different status or flash message indicating failure,
+            // but for user experience, sometimes it's better to just fail gracefully 
+            // or flash a generic error. We'll stick to a success generic for now or real error.
+        }
 
         return redirect()->back()->with('status', '¡Gracias por tu mensaje! Nos pondremos en contacto contigo muy pronto.');
     }

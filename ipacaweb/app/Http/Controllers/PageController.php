@@ -18,7 +18,7 @@ class PageController extends Controller
     public function servicesShow($slug)
     {
         $service = collect($this->getDummyServices())->firstWhere('slug', $slug);
-        
+
         if (!$service) {
             abort(404);
         }
@@ -31,7 +31,7 @@ class PageController extends Controller
     public function projectsShow($slug)
     {
         $project = collect($this->getDummyProjects())->firstWhere('slug', $slug);
-        
+
         if (!$project) {
             abort(404);
         }
@@ -81,7 +81,7 @@ class PageController extends Controller
                 'title' => 'Certificado de Defensa Civil (ITSE)',
                 'short_description' => 'Aprobación de la Inspección Técnica de Seguridad en Edificaciones.',
                 'description' => 'Elaboramos el Expediente Técnico completo (planos de arquitectura, eléctricos, evacuación, ubicación de extintores, señalética, cálculos de aforo) necesarios para obtener tu Certificado ITSE, garantizando la seguridad del local y de las personas.',
-                'image' => '/images/service_licencias.png',
+                'image' => '/images/defensa_civil.jpg',
                 'benefits' => ['Planos Profesionales', 'Cálculo Exacto de Aforos', 'Simulacros y Procedimientos']
             ],
             [
@@ -91,7 +91,7 @@ class PageController extends Controller
                 'title' => 'Regularización de Construcción',
                 'short_description' => 'Saneamiento de edificaciones que fueron construidas sin licencia municipal.',
                 'description' => 'Brindamos soporte legal y arquitectónico para formalizar obras construidas sin el trámite previo de licencia. Nos encargamos del levantamiento, cálculos estructurales (si es requerido) y la gestión municipal para evitar sanciones.',
-                'image' => '/images/service_tecnicos.png',
+                'image' => '/images/saneamiento.jpg',
                 'benefits' => ['Levantamiento de Multas', 'Formalización de la Propiedad', 'Valorización Actualizada']
             ],
             [
@@ -101,7 +101,7 @@ class PageController extends Controller
                 'title' => 'Prescripción Adquisitiva',
                 'short_description' => 'Reconocimiento de propiedad por posesión continua y pacífica.',
                 'description' => 'Asesoramos legal y técnicamente en el proceso de declaración de propiedad para quienes han poseído un bien de manera continua, pacífica y pública por el tiempo exigido por ley. Armamos todo el expediente notarial o judicial necesario.',
-                'image' => '/images/service_saneamiento.png',
+                'image' => '/images/preescripcion.jpg',
                 'benefits' => ['Obtención del Título de Propiedad', 'Inscripción Segura en Sunarp', 'Acompañamiento Legal Especializado']
             ]
         ];

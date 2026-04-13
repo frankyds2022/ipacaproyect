@@ -1,6 +1,7 @@
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
 import WhatsAppButton from '@/Components/WhatsAppButton';
+import SocialSidebar from '@/Components/SocialSidebar';
 
 export default function MainLayout({ children }) {
     return (
@@ -11,6 +12,7 @@ export default function MainLayout({ children }) {
             </main>
             <Footer />
             <WhatsAppButton />
+            <SocialSidebar />
         </div>
     );
 }

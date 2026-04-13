@@ -17,9 +17,9 @@ export default {
             },
             colors: {
                 primary: {
-                    DEFAULT: '#000B4D', // Navy Blue from Logo background
-                    light: '#1a2468',
-                    dark: '#000028',
+                    DEFAULT: '#000144', // Navy Blue exact match from Logo background
+                    light: '#1a1b5c',
+                    dark: '#000022',
                 },
                 secondary: {
                     DEFAULT: '#5B86E5', // Light blue from 'CONSULTORES'

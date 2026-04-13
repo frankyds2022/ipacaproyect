@@ -7,12 +7,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     <div>
                         <div className="flex items-center gap-2 mb-6">
-                            <div className="flex items-end gap-1 pb-1">
-                                <div className="w-3 h-6 bg-slate-300 rounded-sm"></div>
-                                <div className="w-4 h-8 bg-slate-400 rounded-sm"></div>
-                                <div className="w-5 h-10 bg-slate-300 rounded-sm"></div>
-                            </div>
-                            <span className="font-outfit font-extrabold text-2xl text-white tracking-tight">Ipaca <span className="font-light text-slate-300 text-lg uppercase">Consultores</span></span>
+                            <img src="/images/logo.png" alt="Ipaca Consultores" className="h-[5.5rem] w-auto object-contain drop-shadow-lg" />
                         </div>
                         <p className="text-slate-300 leading-relaxed mb-6 font-inter text-sm">
                             Especialistas en la elaboración de Expedientes Técnicos para la obtención de Certificados en Defensa Civil (ITSE), Licencias de Funcionamiento y Saneamiento Inmobiliario Físico Legal. Eliminando las barreras burocráticas.
