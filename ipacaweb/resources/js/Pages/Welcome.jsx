@@ -138,32 +138,82 @@ export default function Welcome({ services, projects }) {
                         <p className="text-slate-600 dark:text-slate-300 font-inter text-lg">Nuestro catálogo completo de soluciones diseñadas para regularizar tu estatus de inmediato.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {services && services.map((service) => (
-                            <div key={service.id} className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 group flex flex-col border border-slate-100 dark:border-slate-700 overflow-hidden transform hover:-translate-y-2">
-                                <div className="h-56 overflow-hidden relative">
-                                    <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/80 via-primary-dark/20 to-transparent opacity-60 group-hover:opacity-80 transition duration-300"></div>
-                                    <div className="absolute bottom-4 left-6">
-                                        <div className="text-xs font-bold bg-white/20 backdrop-blur-md text-white border border-white/30 px-3 py-1 rounded-full uppercase tracking-wider">
-                                            {service.category || "Gestión"}
+                    {/* Servicios Técnicos */}
+                    <div className="mb-20">
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="bg-primary/10 dark:bg-primary-light/20 p-3 text-primary dark:text-primary-light rounded-2xl">
+                                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <h4 className="text-3xl font-outfit font-bold text-slate-900 dark:text-white">Servicios Técnicos</h4>
+                            <div className="h-px bg-slate-200 dark:bg-slate-700 flex-grow hidden sm:block"></div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {services && services.filter(s => s.category === 'Servicios Técnicos').map((service) => (
+                                <div key={service.id} className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 group flex flex-col border border-slate-100 dark:border-slate-700 overflow-hidden transform hover:-translate-y-2">
+                                    <div className="h-56 overflow-hidden relative">
+                                        <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/80 via-primary-dark/20 to-transparent opacity-60 group-hover:opacity-80 transition duration-300"></div>
+                                        <div className="absolute bottom-4 left-6">
+                                            <div className="text-xs font-bold bg-white/20 backdrop-blur-md text-white border border-white/30 px-3 py-1 rounded-full uppercase tracking-wider">
+                                                {service.category || "Gestión"}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="p-8 flex flex-col flex-grow bg-white dark:bg-slate-900">
-                                    <h4 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 font-outfit group-hover:text-primary dark:group-hover:text-secondary-light transition">{service.title}</h4>
-                                    <p className="text-slate-600 dark:text-slate-400 mb-8 text-sm flex-grow leading-relaxed">{service.short_description}</p>
+                                    <div className="p-8 flex flex-col flex-grow bg-white dark:bg-slate-900">
+                                        <h4 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 font-outfit group-hover:text-primary dark:group-hover:text-secondary-light transition">{service.title}</h4>
+                                        <p className="text-slate-600 dark:text-slate-400 mb-8 text-sm flex-grow leading-relaxed">{service.short_description}</p>
 
-                                    <Link
-                                        href={route('services.show', service.slug || service.id)}
-                                        className="inline-flex items-center justify-center w-full bg-slate-50 dark:bg-slate-800 hover:bg-primary dark:hover:bg-primary-light border border-slate-100 dark:border-slate-700 hover:border-primary text-secondary dark:text-secondary-light font-bold hover:text-white px-4 py-3 rounded-xl transition-all duration-300 group/btn"
-                                    >
-                                        Detalles del Servicio
-                                        <svg className="w-5 h-5 ml-2 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                                    </Link>
+                                        <Link
+                                            href={route('services.show', service.slug || service.id)}
+                                            className="inline-flex items-center justify-center w-full bg-slate-50 dark:bg-slate-800 hover:bg-primary dark:hover:bg-primary-light border border-slate-100 dark:border-slate-700 hover:border-primary text-secondary dark:text-secondary-light font-bold hover:text-white px-4 py-3 rounded-xl transition-all duration-300 group/btn"
+                                        >
+                                            Detalles del Servicio
+                                            <svg className="w-5 h-5 ml-2 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                        </Link>
+                                    </div>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Licencias Municipales */}
+                    <div>
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="bg-accent/10 p-3 text-accent rounded-2xl">
+                                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                             </div>
-                        ))}
+                            <h4 className="text-3xl font-outfit font-bold text-slate-900 dark:text-white">Servicios Municipales</h4>
+                            <div className="h-px bg-slate-200 dark:bg-slate-700 flex-grow hidden sm:block"></div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {services && services.filter(s => s.category === 'Licencias Municipales').map((service) => (
+                                <div key={service.id} className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 group flex flex-col border border-slate-100 dark:border-slate-700 overflow-hidden transform hover:-translate-y-2">
+                                    <div className="h-56 overflow-hidden relative">
+                                        <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/80 via-primary-dark/20 to-transparent opacity-60 group-hover:opacity-80 transition duration-300"></div>
+                                        <div className="absolute bottom-4 left-6">
+                                            <div className="text-xs font-bold bg-white/20 backdrop-blur-md text-white border border-white/30 px-3 py-1 rounded-full uppercase tracking-wider">
+                                                {service.category || "Gestión"}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="p-8 flex flex-col flex-grow bg-white dark:bg-slate-900">
+                                        <h4 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 font-outfit group-hover:text-primary dark:group-hover:text-secondary-light transition">{service.title}</h4>
+                                        <p className="text-slate-600 dark:text-slate-400 mb-8 text-sm flex-grow leading-relaxed">{service.short_description}</p>
+
+                                        <Link
+                                            href={route('services.show', service.slug || service.id)}
+                                            className="inline-flex items-center justify-center w-full bg-slate-50 dark:bg-slate-800 hover:bg-primary dark:hover:bg-primary-light border border-slate-100 dark:border-slate-700 hover:border-primary text-secondary dark:text-secondary-light font-bold hover:text-white px-4 py-3 rounded-xl transition-all duration-300 group/btn"
+                                        >
+                                            Detalles del Servicio
+                                            <svg className="w-5 h-5 ml-2 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>

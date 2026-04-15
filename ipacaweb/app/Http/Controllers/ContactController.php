@@ -12,7 +12,9 @@ class ContactController extends Controller
 {
     public function show()
     {
-        return Inertia::render('Contact');
+        return Inertia::render('Contact', [
+            'status' => session('status'),
+        ]);
     }
 
     public function submit(Request $request)

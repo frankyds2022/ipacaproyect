@@ -1,5 +1,6 @@
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
+import { useState } from 'react';
 
 export default function Contact({ status }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -9,6 +10,33 @@ export default function Contact({ status }) {
         service: '',
         message: '',
     });
+
+    const [selectedCategory, setSelectedCategory] = useState('');
+
+    const categories = {
+        'Servicios Técnicos': [
+            'Declaratoria de Fábrica',
+            'Independización de Predios',
+            'Regularización de Construcción',
+            'Prescripción Adquisitiva',
+            'Elaboración de Contratos',
+            'Reglamento Interno',
+            'Anticipo de Herencia',
+            'Lotizaciones',
+            'Rectificación de Áreas y Linderos',
+        ],
+        'Licencias Municipales': [
+            'Licencia de Funcionamiento',
+            'Certificado Defensa Civil (ITSE)',
+            'Licencia de Demolición',
+            'Licencia de Construcción',
+            'Licencia de Anuncios',
+            'Licencia de Habilitación Urbana',
+            'Zonificación y Vías',
+            'Conformidad de Obra',
+            'Cambio de Zonificación'
+        ]
+    };
 
     const submit = (e) => {
         e.preventDefault();
@@ -105,17 +133,6 @@ export default function Contact({ status }) {
                             <h3 className="text-3xl font-outfit font-bold text-slate-900 dark:text-white mb-2">Envíanos tu Consulta</h3>
                             <p className="text-slate-500 dark:text-slate-400 mb-8 text-sm">Tus datos están protegidos y te responderemos en menos de 24 horas hábiles.</p>
 
-                            {status && (
-                                <div className="mb-8 p-4 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-xl font-medium border border-green-200 dark:border-green-800 flex items-center gap-3">
-                                    <div className="bg-green-100 dark:bg-green-800 rounded-full p-1">
-                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                        </svg>
-                                    </div>
-                                    {status}
-                                </div>
-                            )}
-
                             <form onSubmit={submit} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
@@ -158,19 +175,41 @@ export default function Contact({ status }) {
                                 </div>
 
                                 <div>
-                                    <label htmlFor="service" className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Tipo de Trámite o Servicio Requerido</label>
+                                    <label htmlFor="category" className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Categoría del Servicio</label>
+                                    <div className="relative">
+                                        <select
+                                            id="category"
+                                            value={selectedCategory}
+                                            onChange={e => {
+                                                setSelectedCategory(e.target.value);
+                                                setData('service', ''); // Reset service when category changes
+                                            }}
+                                            className="w-full border-slate-200 dark:border-slate-700 focus:border-secondary dark:focus:border-secondary focus:ring-secondary rounded-xl shadow-sm bg-slate-50 dark:bg-slate-900/50 dark:text-white px-4 py-3 appearance-none transition-colors"
+                                        >
+                                            <option value="">Selecciona una categoría</option>
+                                            <option value="Servicios Técnicos">Servicios Técnicos</option>
+                                            <option value="Licencias Municipales">Licencias Municipales</option>
+                                            <option value="Otro">Otro Trámite Municipal o Legal</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="service" className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Servicio Específico Requerido</label>
                                     <div className="relative">
                                         <select
                                             id="service"
                                             value={data.service}
                                             onChange={e => setData('service', e.target.value)}
-                                            className="w-full border-slate-200 dark:border-slate-700 focus:border-secondary dark:focus:border-secondary focus:ring-secondary rounded-xl shadow-sm bg-slate-50 dark:bg-slate-900/50 dark:text-white px-4 py-3 appearance-none transition-colors"
+                                            disabled={!selectedCategory || selectedCategory === 'Otro'}
+                                            className="w-full border-slate-200 dark:border-slate-700 focus:border-secondary dark:focus:border-secondary focus:ring-secondary rounded-xl shadow-sm bg-slate-50 dark:bg-slate-900/50 dark:text-white px-4 py-3 appearance-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
-                                            <option value="">Selecciona un área de interés</option>
-                                            <option value="licencia_funcionamiento">Licencia de Funcionamiento</option>
-                                            <option value="defensa_civil_itse">Defensa Civil (ITSE)</option>
-                                            <option value="declaratoria_fabrica">Declaratoria de Fábrica / Saneamiento</option>
-                                            <option value="otro">Otro Trámite Municipal o Legal</option>
+                                            <option value="">
+                                                {selectedCategory === 'Otro' ? 'Describe el trámite en los detalles' : (selectedCategory ? 'Selecciona un servicio de la lista' : 'Primero selecciona una categoría')}
+                                            </option>
+                                            {selectedCategory && categories[selectedCategory] && categories[selectedCategory].map((srv, idx) => (
+                                                <option key={idx} value={srv}>{srv}</option>
+                                            ))}
                                         </select>
                                     </div>
                                 </div>
@@ -203,6 +242,47 @@ export default function Contact({ status }) {
                     </div>
                 </div>
             </section>
+
+            {/* Modal de Confirmación de Envío Exitoso */}
+            {status && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm px-4">
+                    <div className="bg-white dark:bg-slate-800 rounded-3xl p-10 max-w-md w-full shadow-2xl text-center transform animate-[pop_0.3s_ease-out]">
+                        <div className="w-24 h-24 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                            <svg className="w-12 h-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 className="text-3xl font-bold font-outfit text-slate-800 dark:text-white mb-4">¡Excelente!</h3>
+                        <p className="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed text-lg">
+                            {status}
+                        </p>
+                        <div className="flex justify-center">
+                            <Link
+                                href={route('home')}
+                                className="bg-gradient-to-r from-accent to-yellow-600 hover:from-accent-hover hover:to-yellow-700 text-white px-10 py-4 w-full rounded-full font-bold shadow-lg transition-transform hover:scale-105"
+                            >
+                                Ok, Volver al Inicio
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Pantalla de Carga (Loader) durante el envío */}
+            {processing && (
+                <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-900/80 backdrop-blur-md px-4">
+                    <div className="bg-white dark:bg-slate-800 rounded-3xl p-10 max-w-sm w-full shadow-2xl flex flex-col items-center text-center transform animate-[pop_0.3s_ease-out]">
+                        <svg className="animate-spin h-16 w-16 text-accent mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <h3 className="text-2xl font-bold font-outfit text-slate-800 dark:text-white mb-2">Enviando mensaje</h3>
+                        <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
+                            Por favor no cierres la ventana, estamos conectando con nuestros asesores...
+                        </p>
+                    </div>
+                </div>
+            )}
         </MainLayout>
     );
 }
