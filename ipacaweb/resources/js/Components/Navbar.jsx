@@ -1,24 +1,32 @@
 import { Link } from '@inertiajs/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const navLinks = [
         { name: 'Inicio', href: '/#' },
         { name: 'Nosotros', href: '/#nosotros' },
         { name: 'Servicios', href: '/#servicios' },
         { name: 'Proyectos', href: '/#proyectos' },
-        // { name: 'Contáctanos', href: route('contact') },
     ];
 
     return (
-        <nav className="bg-primary dark:bg-primary-dark sticky top-0 z-50 shadow-md border-b border-primary-light dark:border-slate-800 transition-colors duration-300">
+        <nav className={`sticky top-0 z-50  duration-300 bg-primary shadow-xl `}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-24">
                     <div className="flex items-center">
                         <Link href={route('home')} className="flex items-center gap-2">
-                            <img src="/images/logo.png" alt="Ipaca Consultores" className="h-[5.5rem] w-auto object-contain drop-shadow-md" />
+                            <img src="/images/logo.png" alt="Ipaca Consultores" className="h-[4.0rem] w-auto object-contain drop-shadow-md transform scale-125 lg:scale-150 origin-left transition-transform" />
                         </Link>
                     </div>
 
@@ -29,7 +37,7 @@ export default function Navbar() {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-slate-200 dark:text-slate-300 hover:text-accent dark:hover:text-accent font-medium text-sm lg:text-base transition-colors"
+                                    className="text-white hover:text-accent font-medium text-sm lg:text-base transition-colors"
                                 >
                                     {link.name}
                                 </a>
@@ -37,7 +45,7 @@ export default function Navbar() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-slate-200 dark:text-slate-300 hover:text-accent dark:hover:text-accent font-medium text-sm lg:text-base transition-colors"
+                                    className="text-white hover:text-accent font-medium text-sm lg:text-base transition-colors"
                                 >
                                     {link.name}
                                 </Link>
@@ -46,12 +54,6 @@ export default function Navbar() {
                     </div>
 
                     <div className="hidden md:flex items-center space-x-4">
-                        {/* <Link
-                            href={route('login')}
-                            className="text-slate-200 hover:text-white font-medium text-sm"
-                        >
-                            Iniciar Sesión
-                        </Link> */}
                         <Link
                             href={route('contact')}
                             className="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-medium transition shadow-md hover:shadow-lg"
@@ -64,7 +66,7 @@ export default function Navbar() {
                     <div className="flex items-center md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-slate-200 hover:text-white focus:outline-none"
+                            className="text-white hover:text-gray-200 focus:outline-none"
                         >
                             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 {isOpen ? (
@@ -80,7 +82,7 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden bg-primary border-t border-primary-light shadow-xl">
+                <div className={`md:hidden ${scrolled ? 'bg-primary border-t border-primary-light' : 'bg-primary-dark border-t border-primary-light'} shadow-xl`}>
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link) => (
                             link.href.startsWith('/#') ? (
@@ -88,7 +90,7 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-white hover:bg-primary-light"
+                                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-200 hover:bg-primary-light"
                                 >
                                     {link.name}
                                 </a>
@@ -97,18 +99,12 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-white hover:bg-primary-light"
+                                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-200 hover:bg-primary-light"
                                 >
                                     {link.name}
                                 </Link>
                             )
                         ))}
-                        {/* <Link
-                            href={route('login')}
-                            className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-white hover:bg-primary-light border-t border-primary-light mt-2"
-                        >
-                            Iniciar Sesión
-                        </Link> */}
                     </div>
                 </div>
             )}

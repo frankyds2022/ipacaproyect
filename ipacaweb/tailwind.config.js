@@ -1,8 +1,10 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import colors from 'tailwindcss/colors';
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class',
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -17,23 +19,20 @@ export default {
             },
             colors: {
                 primary: {
-                    DEFAULT: '#000144', // Navy Blue exact match from Logo background
-                    light: '#1a1b5c',
-                    dark: '#000022',
+                    DEFAULT: '#D30B20', // rgba(211, 11, 32, 1)
+                    light: '#E82B3E',
+                    dark: '#9A0515',
                 },
                 secondary: {
-                    DEFAULT: '#5B86E5', // Light blue from 'CONSULTORES'
-                    light: '#8baaf0',
-                    dark: '#3f68c2',
+                    DEFAULT: '#ED731A', // R:0.93 G:0.45 B:0.10 -> approx 237, 114, 25
+                    light: '#F4944A',
+                    dark: '#BB570E',
                 },
                 accent: {
-                    DEFAULT: '#F59E0B', // Gold/Orange for titles like 'SERVICIOS TÉCNICOS'
-                    hover: '#D97706'
+                    DEFAULT: '#ee7916eb', // Keeping Gold/Orange as accent, though it matches secondary somewhat
+                    hover: '#b66407ff'
                 },
-                slate: {
-                    800: '#1e293b',
-                    900: '#0f172a',
-                }
+                slate: colors.neutral,
             }
         },
     },

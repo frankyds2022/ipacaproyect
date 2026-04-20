@@ -7,27 +7,49 @@ export default function Welcome({ services, projects }) {
             <Head title="Inicio - IPACA Consultores" />
 
             {/* Hero Section */}
-            <section id="inicio" className="relative bg-primary overflow-hidden">
-                <div className="absolute inset-0 z-0">
+            <section id="inicio" className="relative bg-primary overflow-hidden min-h-[650px] md:min-h-[750px] flex items-center">
+
+                {/* Single Background Image spanning the entire section */}
+                <div className="absolute inset-0 z-0 bg-slate-900">
                     <img
-                        src="/images/hero_ipaca.png"
+                        src="/images/home2.png"
                         alt="Consultores IPACA"
-                        className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay"
+                        className="w-full h-full object-cover object-[70%_35%] opacity-[0.85] transition-transform duration-[20s] hover:scale-105"
                     />
-                    <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-gradient-to-l from-primary-light/90 to-transparent">
-                    </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center py-24 min-h-[650px] md:min-h-[750px]">
-                    <div className="md:w-3/5 text-white pr-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white font-bold text-xs uppercase tracking-wider mb-6">
+                {/* Red Overlay covering the left side with a diagonal Right edge */}
+                {/* The diagonal angle mimics the requested reference design perfectly. */}
+                {/* "Difuminado rojo": A soft gradient overlaid on the image to give it a textured feel */}
+                <div
+                    className="hidden md:block absolute inset-0 bg-gradient-to-r from-slate-800 via-red-800 to-primary opacity-[0.88] z-0"
+                    style={{ clipPath: 'polygon(0 0, 60% 0, 45% 100%, 0 100%)' }}
+                ></div>
+
+                {/* Orange accent band that follows the diagonal slice */}
+                {/* <div
+                    className="hidden md:block absolute inset-0 bg-accent z-0 shadow-2xl"
+                    style={{ clipPath: 'polygon(60% 0, 61.5% 0, 49.5% 100%, 48% 100%)' }}
+                ></div> */}
+
+                {/* Mobile Dark Red Overlay (Full width for small screens) */}
+                <div className="absolute inset-0 md:hidden bg-gradient-to-b from-slate-900 via-red-950 to-primary opacity-[0.92] z-0"></div>
+
+                {/* Soft gradient from bottom to ensure the white transition curve remains crisp */}
+                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/30 to-transparent pointer-events-none z-0"></div>
+
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center w-full pt-28 pb-32 lg:py-32">
+
+                    {/* Text Section Area (Left) */}
+                    <div className="md:w-[55%] text-white pr-8 lg:pr-16 mb-16 md:mb-0 z-20">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white font-bold text-xs uppercase tracking-wider mb-6 shadow-md">
                             <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                             Gestión debidamente gerenciada
                         </div>
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-outfit font-extrabold leading-tight mb-6 drop-shadow-xl">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-extrabold leading-tight mb-6 drop-shadow-xl">
                             Eliminando las <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-200">barreras burocráticas</span> para tu empresa
                         </h1>
-                        <p className="text-lg md:text-xl text-slate-200 mb-10 font-inter leading-relaxed max-w-2xl font-light">
+                        <p className="text-lg text-slate-200 mb-10 font-inter leading-relaxed max-w-md font-light">
                             Empresa con amplia experiencia, especializada en la elaboración de Expedientes Técnicos para la obtención de Certificados en Defensa Civil (ITSE), Licencias de Funcionamiento y Saneamiento Inmobiliario Físico - Legal.
                         </p>
                         <div className="flex flex-wrap gap-4">
@@ -46,38 +68,40 @@ export default function Welcome({ services, projects }) {
                         </div>
                     </div>
 
-                    <div className="md:w-2/5 mt-16 md:mt-0 relative w-full hidden md:block">
-                        <div className="rounded-3xl overflow-hidden shadow-2xl bg-slate-800 aspect-[4/5] border-4 border-white/10 relative group transform hover:rotate-1 transition duration-500">
-                            <img src="/images/home.jpg" alt="Equipo IPACA" className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/40 to-transparent opacity-80"></div>
-
-                            <div className="absolute bottom-8 left-8 right-8 mb-2">
-                                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl">
-                                    <h3 className="text-white font-outfit font-bold text-2xl mb-1">Equipo Profesional</h3>
-                                    <p className="text-slate-300 text-sm">Asesores e ingenieros colegiados</p>
-                                </div>
+                    {/* Floating badges that overlap the diagonal line */}
+                    {/* Badge 1 */}
+                    {/* <div className="hidden md:block absolute top-[25%] right-[40%] lg:right-[38%] bg-white border border-slate-100 p-4 rounded-xl shadow-2xl z-30 animate-fade-in-up hover:-translate-y-1 transition-transform">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/20 text-xl font-bold font-outfit">
+                                10+
+                            </div>
+                            <div>
+                                <p className="text-slate-800 font-extrabold text-sm mb-0">Años Exp.</p>
+                                <p className="text-slate-500 text-xs font-semibold">Técnicos Colegiados</p>
                             </div>
                         </div>
+                    </div> */}
 
-                        <div className="absolute -bottom-8 -left-8 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-2xl border-l-4 border-accent animate-bounce-slow">
-                            <div className="flex items-center gap-4">
-                                <div className="bg-green-50 dark:bg-green-900/30 p-3 rounded-full">
-                                    <svg className="w-8 h-8 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Trámites</p>
-                                    <p className="text-base font-extrabold text-slate-800 dark:text-white">100% Exitosos</p>
-                                </div>
+                    {/* Badge 2 */}
+                    <div className="hidden md:block absolute bottom-[20%] lg:bottom-[25%] right-[45%] lg:right-[40%] bg-white p-4 rounded-xl shadow-2xl border-l-[4px] border-primary z-30 hover:-translate-y-1 transition-transform duration-300">
+                        <div className="flex items-center gap-4">
+                            <div className="bg-green-50 p-2.5 rounded-lg border border-green-100">
+                                <svg className="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider leading-none mb-1">Trámites y Licencias</p>
+                                <p className="text-lg font-outfit font-extrabold text-slate-800 leading-none">100% Exitosos</p>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
-                {/* Decorative bottom curve */}
-                <div className="absolute bottom-0 w-full">
-                    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto text-white dark:text-slate-900">
+                {/* Decorative bottom curve perfectly merging into the white 'Nosotros' section */}
+                <div className="absolute bottom-0 left-0 w-full pointer-events-none z-30">
+                    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto text-white dark:text-slate-900" preserveAspectRatio="none">
                         <path d="M0 120H1440V0C1440 0 1140 120 720 120C300 120 0 0 0 0V120Z" fill="currentColor" />
                     </svg>
                 </div>
@@ -103,7 +127,7 @@ export default function Welcome({ services, projects }) {
                                 En <span className="font-bold text-primary dark:text-secondary-light">IPACA Consultores E.I.R.L</span>, somos líderes en la gestión y trámite de expedientes técnicos. Solucionamos los retos legales y físicos de tu propiedad o emprendimiento comercial.
                             </p>
                             <p className="text-slate-600 dark:text-slate-400 mb-10 font-inter leading-relaxed">
-                                Contamos con un equipo multidisciplinario de ingenieros y asesores colegiados que aseguran que todos tus trámites en la municipalidad o registros públicos se realicen de manera correcta, rápida y sin rechazos.
+                                Contamos con un equipo multidisciplinario de arquitectos, ingenieros y asesores colegiados que aseguran que tus trámites en las municipalidades o registros públicos se realicen de manera correcta, rápida y sin rechazos.
                             </p>
 
                             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -138,18 +162,20 @@ export default function Welcome({ services, projects }) {
                         <p className="text-slate-600 dark:text-slate-300 font-inter text-lg">Nuestro catálogo completo de soluciones diseñadas para regularizar tu estatus de inmediato.</p>
                     </div>
 
-                    {/* Servicios Técnicos */}
+
+
+                    {/* Licencias Municipales */}
                     <div className="mb-20">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="bg-primary/10 dark:bg-primary-light/20 p-3 text-primary dark:text-primary-light rounded-2xl">
-                                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            <div className="bg-accent/10 p-3 text-accent rounded-2xl">
+                                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                             </div>
-                            <h4 className="text-3xl font-outfit font-bold text-slate-900 dark:text-white">Servicios Técnicos</h4>
+                            <h4 className="text-3xl font-outfit font-bold text-slate-900 dark:text-white">Servicios Municipales</h4>
                             <div className="h-px bg-slate-200 dark:bg-slate-700 flex-grow hidden sm:block"></div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {services && services.filter(s => s.category === 'Servicios Técnicos').map((service) => (
+                            {services && services.filter(s => s.category === 'Licencias Municipales').map((service) => (
                                 <div key={service.id} className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 group flex flex-col border border-slate-100 dark:border-slate-700 overflow-hidden transform hover:-translate-y-2">
                                     <div className="h-56 overflow-hidden relative">
                                         <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -176,19 +202,18 @@ export default function Welcome({ services, projects }) {
                             ))}
                         </div>
                     </div>
-
-                    {/* Licencias Municipales */}
-                    <div>
+                    {/* Servicios Técnicos */}
+                    <div >
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="bg-accent/10 p-3 text-accent rounded-2xl">
-                                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                            <div className="bg-primary/10 dark:bg-primary-light/20 p-3 text-primary dark:text-primary-light rounded-2xl">
+                                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                             </div>
-                            <h4 className="text-3xl font-outfit font-bold text-slate-900 dark:text-white">Servicios Municipales</h4>
+                            <h4 className="text-3xl font-outfit font-bold text-slate-900 dark:text-white">Servicios Técnicos</h4>
                             <div className="h-px bg-slate-200 dark:bg-slate-700 flex-grow hidden sm:block"></div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {services && services.filter(s => s.category === 'Licencias Municipales').map((service) => (
+                            {services && services.filter(s => s.category === 'Servicios Técnicos').map((service) => (
                                 <div key={service.id} className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 group flex flex-col border border-slate-100 dark:border-slate-700 overflow-hidden transform hover:-translate-y-2">
                                     <div className="h-56 overflow-hidden relative">
                                         <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />

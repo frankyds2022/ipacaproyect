@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     <div>
                         <div className="flex items-center gap-2 mb-6">
-                            <img src="/images/logo.png" alt="Ipaca Consultores" className="h-[5.5rem] w-auto object-contain drop-shadow-lg" />
+                            <img src="/images/logo.png" alt="Ipaca Consultores" className="h-[9.5rem] w-auto object-contain drop-shadow-lg" />
                         </div>
                         <p className="text-slate-300 leading-relaxed mb-6 font-inter text-sm">
                             Especialistas en la elaboración de Expedientes Técnicos para la obtención de Certificados en Defensa Civil (ITSE), Licencias de Funcionamiento y Saneamiento Inmobiliario Físico Legal. Eliminando las barreras burocráticas.
