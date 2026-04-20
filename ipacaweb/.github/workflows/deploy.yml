@@ -1,0 +1,60 @@
+name: Deploy to Hostinger FTP
+
+on:
+  push:
+    branches:
+      - main # o 'master' si tu rama se llama así
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: 🛠️ Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3' # Ajusta si usas otra versión de PHP en Hostinger
+
+    - name: 📦 Install Composer Dependencies
+      run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+
+    - name: 🛠️ Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: 📦 Install NPM & Build React
+      run: |
+        npm install
+        npm run build
+
+    - name: 📂 Sync public files to public_html
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./public/
+        server-dir: ./public_html/
+
+    - name: 📂 Sync core files to ipaca_web
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: ./ipaca_web/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/public/**
+          tests/**
+          .env
+          .env.example
+          README.md
