@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title inertia>{{ config('app.name', 'ipacaConsultores') }}</title>
+    <title inertia>{{ config('app.name', 'Ipaca Consultores') }}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

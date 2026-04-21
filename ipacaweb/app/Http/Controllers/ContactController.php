@@ -28,7 +28,7 @@ class ContactController extends Controller
         ]);
 
         try {
-            Mail::to('delacruzsuclupefranky2@gmail.com')->send(new ContactMessage($validated));
+            Mail::to('contacto@ipacaconsultores.com')->send(new ContactMessage($validated));
             Log::info('Nuevo Mensaje de Contacto enviado exitosamente: ', $validated);
         } catch (\Exception $e) {
             Log::error('Error al enviar mensaje de contacto: ' . $e->getMessage());
