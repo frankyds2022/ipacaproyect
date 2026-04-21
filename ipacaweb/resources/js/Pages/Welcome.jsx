@@ -44,7 +44,7 @@ export default function Welcome({ services, projects }) {
                     <div className="md:w-[55%] text-white pr-8 lg:pr-16 mb-16 md:mb-0 z-20">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white font-bold text-xs uppercase tracking-wider mb-6 shadow-md">
                             <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                            gerenciada
+                            Gestión debidamente gerciada
                         </div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-extrabold leading-tight mb-6 drop-shadow-xl">
                             Eliminando las <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-200">barreras burocráticas</span> para tu empresa
