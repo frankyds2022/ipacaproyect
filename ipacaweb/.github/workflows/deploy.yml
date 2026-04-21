@@ -39,12 +39,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./public/
-        server-dir: ./
-
-    - name: 🔒 Generate Secure .htaccess for Backend
-      run: |
-        echo "Options -Indexes" > .htaccess
-        echo "Deny from all" >> .htaccess
+        server-dir: ./domains/ipacaconsultores.com/public_html/
 
     - name: 📂 Sync core files to ipaca_web
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -53,7 +48,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
-        server-dir: ./ipaca_web/
+        server-dir: ./domains/ipacaconsultores.com/ipaca_web/
         exclude: |
           **/.git*
           **/.git*/**
