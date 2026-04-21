@@ -21,7 +21,6 @@ jobs:
 
     - name: 📦 Install Composer Dependencies
       run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
-      working-directory: ./ipacaweb
 
     - name: 🛠️ Setup Node.js
       uses: actions/setup-node@v4
@@ -32,7 +31,6 @@ jobs:
       run: |
         npm install
         npm run build
-      working-directory: ./ipacaweb
 
     - name: 📂 Sync public files to public_html
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -40,7 +38,7 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./ipacaweb/public/
+        local-dir: ./public/
         server-dir: ./public_html/
 
     - name: 📂 Sync core files to ipaca_web
@@ -49,9 +47,10 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./ipacaweb/
+        local-dir: ./
         server-dir: ./ipaca_web/
         exclude: |
+
           **/.git*
           **/.git*/**
           **/node_modules/**
