@@ -10,12 +10,18 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
     require $maintenance;
 }
 
-// Register the Composer autoloader...
-require __DIR__.'/../ipaca_web/vendor/autoload.php';
+// ----------------------------------------------------------------------
+// DETECCIÓN AUTOMÁTICA DE ENTORNO (Hostinger vs PC Local)
+// ----------------------------------------------------------------------
+if (file_exists(__DIR__.'/ipaca_web/vendor/autoload.php')) {
+    // ESTAMOS EN HOSTINGER (Estructura: public_html -> ipaca_web)
+    require __DIR__.'/ipaca_web/vendor/autoload.php';
+    $app = require_once __DIR__.'/ipaca_web/bootstrap/app.php';
+} else {
+    // ESTAMOS EN PC LOCAL (Servidor de Desarrollo de Laravel)
+    require __DIR__.'/../vendor/autoload.php';
+    $app = require_once __DIR__.'/../bootstrap/app.php';
+}
 
-// Bootstrap Laravel and handle the request...
-/** @var Application $app */
-$app = require_once __DIR__.'/../ipaca_web/bootstrap/app.php';
 $app->usePublicPath(__DIR__);
-
 $app->handleRequest(Request::capture());
