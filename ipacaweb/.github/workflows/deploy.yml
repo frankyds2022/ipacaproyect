@@ -50,7 +50,6 @@ jobs:
         local-dir: ./
         server-dir: ./ipaca_web/
         exclude: |
-
           **/.git*
           **/.git*/**
           **/node_modules/**
