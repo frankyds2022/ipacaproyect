@@ -108,7 +108,7 @@ export default function Contact({ status }) {
                                         </div>
                                         <div>
                                             <p className="text-sm text-slate-300 uppercase tracking-widest font-bold text-xs mb-1">Correo Corporativo</p>
-                                            <p className="text-xl font-bold font-inter text-white">consultas@ipacaconsultores.com</p>
+                                            <p className="text-base lg:text-xl font-bold font-inter text-white break-all">contacto@ipacaconsultores.com</p>
                                         </div>
                                     </div>
 
