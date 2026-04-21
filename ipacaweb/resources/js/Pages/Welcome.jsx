@@ -50,7 +50,7 @@ export default function Welcome({ services, projects }) {
                             Eliminando las <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-200">barreras burocráticas</span> para tu empresa
                         </h1>
                         <p className="text-lg text-slate-200 mb-10 font-inter leading-relaxed max-w-md font-light">
-                            con amplia experiencia, especializada en la elaboración de Expedientes Técnicos para la obtención de Certificados en Defensa Civil (ITSE), Licencias de Funcionamiento y Saneamiento Inmobiliario Físico - Legal.
+                            Empresa con amplia experiencia, especializada en la elaboración de Expedientes Técnicos para la obtención de Certificados en Defensa Civil (ITSE), Licencias de Funcionamiento y Saneamiento Inmobiliario Físico - Legal.
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <a
