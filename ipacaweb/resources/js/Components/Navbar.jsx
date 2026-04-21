@@ -23,10 +23,28 @@ export default function Navbar() {
     return (
         <nav className={`sticky top-0 z-50 duration-300 bg-primary-dark shadow-xl border-b border-red-900/50`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-24">
-                    <div className="flex items-center">
+                <div className="flex items-center justify-between h-24 relative">
+                    
+                    {/* Mobile Menu Button - Moved to Far Left */}
+                    <div className="flex items-center md:hidden absolute left-0 z-10">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="text-white hover:text-gray-200 focus:outline-none pl-2"
+                        >
+                            <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                {isOpen ? (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                ) : (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
+
+                    {/* Logo - Centered on Mobile, Left on Desktop */}
+                    <div className="flex justify-center w-full md:w-auto md:justify-start">
                         <Link href={route('home')} className="flex items-center gap-2">
-                            <img src="/images/logo.png" alt="Ipaca Consultores" className="h-[4.0rem] w-auto object-contain drop-shadow-md transform scale-125 lg:scale-150 origin-left transition-transform" />
+                            <img src="/images/logo.png" alt="Ipaca Consultores" className="h-[4.0rem] w-auto object-contain drop-shadow-md transform scale-125 lg:scale-150 origin-center md:origin-left transition-transform" />
                         </Link>
                     </div>
 
@@ -60,22 +78,6 @@ export default function Navbar() {
                         >
                             Contáctanos
                         </Link>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <div className="flex items-center md:hidden">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-white hover:text-gray-200 focus:outline-none"
-                        >
-                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                {isOpen ? (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                ) : (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                                )}
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
