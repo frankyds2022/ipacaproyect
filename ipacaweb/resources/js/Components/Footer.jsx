@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 
 export default function Footer() {
     return (
-        <footer className="bg-primary dark:bg-primary-dark text-white pt-16 pb-8 border-t-4 border-accent transition-colors duration-300">
+        <footer className="bg-primary-dark text-white pt-16 pb-8 border-t-4 border-accent transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     <div>
