@@ -42,7 +42,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./public/
-        server-dir: ./public_html/
+        server-dir: ./domains/ipacaconsultores.com/public_html/
 
     - name: 📂 Sync core files to ipaca_web
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -51,7 +51,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
-        server-dir: ./ipaca_web/
+        server-dir: ./domains/ipacaconsultores.com/ipaca_web/
         exclude: |
           **/.git*
           **/.git*/**
