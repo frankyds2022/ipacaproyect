@@ -59,4 +59,5 @@ jobs:
           tests/**
           .env
           .env.example
+          vendor/**
           README.md
