@@ -32,6 +32,9 @@ jobs:
         npm install
         npm run build
 
+    - name: 🙈 Bypass .gitignore for FTP Sync
+      run: mv .gitignore .gitignore.bak
+
     - name: 📂 Sync public files to public_html
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
