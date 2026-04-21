@@ -32,8 +32,12 @@ jobs:
         npm install
         npm run build
 
-    - name: 🙈 Bypass .gitignore for FTP Sync
-      run: mv .gitignore .gitignore.bak
+    - name: 🙈 Force git tracking for build artifacts locally
+      run: |
+        git config --global user.email "bot@ipaca.com"
+        git config --global user.name "Robot FTP"
+        git add -f public/build
+        git commit -m "Force track build folder"
 
     - name: 📂 Sync public files to public_html
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
