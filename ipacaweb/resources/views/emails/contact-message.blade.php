@@ -1,25 +1,35 @@
 <x-mail::message>
-# Nuevo Mensaje de Contacto
+# 🏢 Nueva Solicitud de Asesoría Técnica
 
-Has recibido un nuevo mensaje a través del formulario de contacto de la página web de IPACA Consultores.
+Estimado equipo de **IPACA Consultores**,
 
-### Detalles del remitente:
+Se ha registrado el ingreso de una nueva solicitud a través del portal web oficial. A continuación, se detallan los datos del prospecto para su pronta atención:
 
-- **Nombre/Razón Social:** {{ $data['name'] }}
-- **Correo Electrónico:** [{{ $data['email'] }}](mailto:{{ $data['email'] }})
-- **Celular:** {{ $data['phone'] }}
-- **Tipo de Trámite/Servicio:** {{ $data['service'] ?? 'No especificado' }}
+<x-mail::table>
+| Datos del Prospecto | Información Registrada |
+| :--- | :--- |
+| **Peticionario / Empresa:** | {{ $data['name'] }} |
+| **Número de Contacto:** | {{ $data['phone'] }} |
+| **Correo Electrónico:** | [{{ $data['email'] }}](mailto:{{ $data['email'] }}) |
+| **Servicio de Interés:** | {{ $data['service'] ? $data['service'] : 'No especificado (Asesoría General)' }} |
+</x-mail::table>
 
-### Mensaje:
+<br>
+
+### 📄 Detalles Adicionales y Descripción
 
 <x-mail::panel>
-{{ $data['message'] }}
+**Mensaje original escrito por el cliente:**  
+*"{!! nl2br(e($data['message'])) !!}"*
 </x-mail::panel>
 
-<x-mail::button :url="'mailto:'.$data['email']">
+Para brindar un seguimiento inmediato, puede responder directamente a este correo haciendo clic en el siguiente botón:
+
+<x-mail::button :url="'mailto:'.$data['email']" color="error">
 Responder a {{ $data['name'] }}
 </x-mail::button>
 
-Saludos,<br>
-El equipo de **{{ config('app.name') }}**
+Atentamente,<br>
+**Sistema Automático de {{ config('app.name') }}**  
+*(Por favor, atienda esta solicitud en las próximas 24 horas hábiles).*
 </x-mail::message>

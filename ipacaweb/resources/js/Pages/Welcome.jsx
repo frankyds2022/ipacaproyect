@@ -272,9 +272,10 @@ export default function Welcome({ services, projects }) {
                                         <h3 className="text-2xl font-bold text-white mb-3 font-outfit leading-tight">{project.title}</h3>
                                         <p className="text-slate-300 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 max-h-0 group-hover:max-h-24 overflow-hidden">{project.short_description}</p>
 
-                                        <Link href={route('projects.show', project.slug || project.id)} className="text-sm border border-white/30 bg-white/10 hover:bg-white text-white hover:text-primary backdrop-blur-md px-6 py-2.5 rounded-full font-bold shadow-lg inline-flex items-center transition-all duration-300">
+                                        <Link className="text-sm border border-white/30 bg-white/10 hover:bg-white text-white hover:text-primary backdrop-blur-md px-6 py-2.5 rounded-full font-bold shadow-lg inline-flex items-center transition-all duration-300">
                                             Ver Caso Completo <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                                         </Link>
+                                        {/* href={route('projects.show', project.slug || project.id)} */}
                                     </div>
                                 </div>
                             </div>

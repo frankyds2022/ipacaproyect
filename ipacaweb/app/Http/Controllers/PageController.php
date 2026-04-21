@@ -236,18 +236,6 @@ class PageController extends Controller
         return [
             [
                 'id' => 1,
-                'slug' => 'saneamiento-edificio-multifamiliar',
-                'title' => 'Saneamiento de Edificio Multifamiliar',
-                'short_description' => 'Independización y Declaratoria de Fábrica para 12 departamentos.',
-                'location' => 'Lima',
-                'description' => 'Nos encargamos del levantamiento arquitectónico completo de un edificio de 4 pisos que no contaba con licencia. Logramos tramitar la regularización, declaratoria de fábrica, reglamento interno e independización registral de los 12 departamentos.',
-                'client' => 'Inmobiliaria D&J',
-                'date' => 'Agosto 2023',
-                'image' => '/images/project_edificio.png',
-                'service_type' => 'Servicios Técnicos Múltiples'
-            ],
-            [
-                'id' => 2,
                 'slug' => 'licencia-itse-centro-comercial',
                 'title' => 'Certificación ITSE para Centro Comercial',
                 'short_description' => 'Expediente técnico completo de seguridad para una galería comercial.',
@@ -258,6 +246,19 @@ class PageController extends Controller
                 'image' => '/images/project_edificio.png',
                 'service_type' => 'Licencias Municipales'
             ],
+            [
+                'id' => 2,
+                'slug' => 'saneamiento-edificio-multifamiliar',
+                'title' => 'Saneamiento de Edificio Multifamiliar',
+                'short_description' => 'Independización y Declaratoria de Fábrica para 12 departamentos.',
+                'location' => 'Lima',
+                'description' => 'Nos encargamos del levantamiento arquitectónico completo de un edificio de 4 pisos que no contaba con licencia. Logramos tramitar la regularización, declaratoria de fábrica, reglamento interno e independización registral de los 12 departamentos.',
+                'client' => 'Inmobiliaria D&J',
+                'date' => 'Agosto 2023',
+                'image' => '/images/project_edificio.png',
+                'service_type' => 'Servicios Técnicos Múltiples'
+            ],
+
             [
                 'id' => 3,
                 'slug' => 'habilitacion-urbana-condominio',
